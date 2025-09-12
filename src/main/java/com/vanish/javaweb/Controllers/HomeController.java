@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "HomeController", value = "/home")
+@WebServlet(name = "HomeController", value = "/")
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        request.setAttribute("message", "Hello from Home");
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
