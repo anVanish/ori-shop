@@ -7,8 +7,10 @@
 </head>
 <body>
 	<%@ include file="/common/user/header.jsp" %>
+	<c:if test="${not empty hasSidebar}">
+    <%@ include file="/common/user/sidebar.jsp" %>
+    </c:if>
 
-	<h2>Hello World! from user</h2>
 	<decorator:body></decorator:body>
 	
 	<%@ include file="/common/user/footer.jsp" %>
