@@ -4,6 +4,15 @@
 	<li><a href="#">About</a></li>
 	<li><a href="#">Cart</a></li>
 	<li><a href="#">User</a></li>
-	<li><a href="#">Login</a></li>
-	<li><a href="#">Logout</a></li>	
+
+	<c:choose>
+        <c:when test="${not empty sessionScope.user}">
+            <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+        </c:when>
+        <c:otherwise>
+        	<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+        </c:otherwise>
+    </c:choose>
+
+
 </ul>
