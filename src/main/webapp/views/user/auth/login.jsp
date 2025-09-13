@@ -7,5 +7,6 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required> <br><br>
 
+    <a href="${pageContext.request.contextPath}/signup">No account? Signup now</a> <br/><br/>
     <button type="submit">Login</button>
 </form>
