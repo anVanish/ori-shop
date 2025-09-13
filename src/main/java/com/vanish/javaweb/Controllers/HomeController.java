@@ -24,10 +24,7 @@ public class HomeController extends HttpServlet {
         List<Category> categories = categoryService.findAll();
 //        request.setAttribute("products", products);
         request.setAttribute("categories", categories);
-        request.setAttribute("length", categories.size());
 
-
-        request.setAttribute("message", "Hello from Home");
         request.getRequestDispatcher("views/user/home.jsp").forward(request, response);
     }
 
