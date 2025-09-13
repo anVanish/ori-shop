@@ -10,11 +10,11 @@ public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ProductId;
+    private int productId;
     @Column(columnDefinition = "TEXT")
-    private String Description;
+    private String description;
     @Column(length = 255)
-    private String ProductName;
+    private String productName;
 
     private int stock;
     private int price;
@@ -26,9 +26,9 @@ public class Product implements Serializable {
 
     public Product(int productId, String description, String productName, int stock, int price, String imageLink) {
         super();
-        ProductId = productId;
-        Description = description;
-        ProductName = productName;
+        this.productId = productId;
+        this.description = description;
+        this.productName = productName;
         this.stock = stock;
         this.price = price;
         this.imageLink = imageLink;
@@ -38,40 +38,17 @@ public class Product implements Serializable {
         super();
     }
 
-    public void setProductId(int productId) {
-        ProductId = productId;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public void setProductName(String productName) {
-        ProductName = productName;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
-    }
-
+    //getter
     public int getProductId() {
-        return ProductId;
+        return productId;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public int getStock() {
@@ -90,15 +67,56 @@ public class Product implements Serializable {
         return category;
     }
 
+    //Builder
+    public static class Builder{
+        private int productId;
+        private String description;
+        private String productName;
+
+        private int stock;
+        private int price;
+        private String imageLink;
+
+        public Builder setProductId(int productId) {
+            this.productId = productId;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setProductName(String productName) {
+            this.productName = productName;
+            return this;
+        }
+
+        public Builder setStock(int stock) {
+            this.stock = stock;
+            return this;
+        }
+
+        public Builder setPrice(int price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setImageLink(String imageLink) {
+            this.imageLink = imageLink;
+            return this;
+        }
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "imageLink='" + imageLink + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
-                ", ProductName='" + ProductName + '\'' +
-                ", Description='" + Description + '\'' +
-                ", ProductId=" + ProductId +
+                ", ProductName='" + productName + '\'' +
+                ", Description='" + description + '\'' +
+                ", ProductId=" + productId +
                 '}';
     }
 }
