@@ -1,5 +1,5 @@
 <ul>
-	<li><a href="#">Home</a></li>
+	<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 	<li><a href="#">Product</a></li>
 	<li><a href="#">About</a></li>
 	<li><a href="#">Cart</a></li>
