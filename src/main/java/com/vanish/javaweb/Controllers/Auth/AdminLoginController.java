@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginController", value = "/login")
-public class LoginController extends HttpServlet {
+@WebServlet(name = "AdminLoginController", value = "/admin/login")
+public class AdminLoginController  extends HttpServlet {
     UserServiceImpl userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/views/user/auth/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/admin/auth/login.jsp").forward(request, response);
     }
 
     @Override
@@ -30,14 +30,18 @@ public class LoginController extends HttpServlet {
 
         try {
             User user = userService.login(email, password);
+            if (!user.getIsAdmin()){
+                throw new Exception("Required Admin authorization");
+            }
+
             UserModel userModel = new UserModel(user);
             request.getSession().setAttribute("user", userModel);
 
             request.getSession().setAttribute("message", "Login successfully");
-            response.sendRedirect(request.getContextPath() + "/home");
+            response.sendRedirect(request.getContextPath() + "/admin");
         } catch (Exception e) {
             request.getSession().setAttribute("errorMessage", e.getMessage());
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/admin/login");
         }
     }
 }

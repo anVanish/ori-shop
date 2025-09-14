@@ -5,19 +5,27 @@
 <%@ include file="/common/taglibs.jsp"%>
 <html>
 <head>
-    <link rel="stylesheet" href="<c:url value='/public/css/styles.css'/>">
+    <link rel="stylesheet" href="<c:url value='/public/css/styles-admin.css'/>">
     <link rel="stylesheet" href="<c:url value='/public/css/toast.css'/>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-	<%@ include file="/common/user/header.jsp" %>
-	<c:if test="${not empty hasSidebar}">
-        <%@ include file="/common/user/sidebar.jsp" %>
-    </c:if>
+    <div class="content">
+        <c:if test="${not empty sessionScope.user}">
+            <div class="sidebar">
+                <%@ include file="/common/admin/sidebar.jsp" %>
+            </div>
+        </c:if>
 
-	<decorator:body></decorator:body>
-	
-	<%@ include file="/common/user/footer.jsp" %>
+        <div class="main">
+            <decorator:body></decorator:body>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 My Website. All rights reserved.
+        <%@ include file="/common/admin/footer.jsp" %>
+    </div>
 
 	<div id="toast" class="toast hidden">
         <span id="toast-message"></span>

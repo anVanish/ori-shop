@@ -25,7 +25,7 @@ public class HomeController extends HttpServlet {
 //        request.setAttribute("products", products);
         request.setAttribute("categories", categories);
 
-        request.getRequestDispatcher("views/user/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
     }
 
     @Override
