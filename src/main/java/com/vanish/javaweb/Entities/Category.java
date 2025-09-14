@@ -46,6 +46,14 @@ public class Category implements Serializable {
         return products;
     }
 
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public static class Builder{
         private int categoryId;
         private String categoryName;
