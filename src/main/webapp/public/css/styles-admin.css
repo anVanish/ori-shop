@@ -121,50 +121,54 @@ td {
 }
 
 .form-container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 450px;
-    }
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 450px;
+}
 
-    .form-container h2 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 20px;
-      text-align: center;
-      color: #333;
-    }
+.form-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
 
-    .form-group {
-      margin-bottom: 15px;
-    }
+.form-group {
+  margin-bottom: 15px;
+}
 
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-      font-size: 14px;
-      color: #444;
-    }
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #444;
+}
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-    }
+.form-group textarea {
+    resize: vertical; /* can only resize up/down */
+}
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: #3498db;
-      outline: none;
-      box-shadow: 0 0 3px rgba(52, 152, 219, 0.5);
-    }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 3px rgba(52, 152, 219, 0.5);
+}
 
 .bottom{
     margin-bottom: 10px;

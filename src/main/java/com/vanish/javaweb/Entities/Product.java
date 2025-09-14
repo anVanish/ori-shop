@@ -24,18 +24,16 @@ public class Product implements Serializable {
     @JoinColumn(name = "CategoryID")
     private Category category;
 
-    public Product(int productId, String description, String productName, int stock, int price, String imageLink) {
-        super();
-        this.productId = productId;
-        this.description = description;
-        this.productName = productName;
-        this.stock = stock;
-        this.price = price;
-        this.imageLink = imageLink;
-    }
+    public Product() {}
 
-    public Product() {
-        super();
+    public Product(Builder builder) {
+        this.productId = builder.productId;
+        this.description = builder.description;
+        this.productName = builder.productName;
+        this.stock = builder.stock;
+        this.price = builder.price;
+        this.imageLink = builder.imageLink;
+        this.category = builder.category;
     }
 
     //getter
@@ -67,6 +65,35 @@ public class Product implements Serializable {
         return category;
     }
 
+    //setter
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     //Builder
     public static class Builder{
         private int productId;
@@ -76,6 +103,7 @@ public class Product implements Serializable {
         private int stock;
         private int price;
         private String imageLink;
+        private Category category;
 
         public Builder setProductId(int productId) {
             this.productId = productId;
@@ -106,17 +134,27 @@ public class Product implements Serializable {
             this.imageLink = imageLink;
             return this;
         }
+
+        public Builder setCategory(Category category){
+            this.category = category;
+            return this;
+        }
+
+        public Product build(){
+            return new Product(this);
+        }
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "imageLink='" + imageLink + '\'' +
-                ", price=" + price +
+                "productId=" + productId +
+                ", description='" + description + '\'' +
+                ", productName='" + productName + '\'' +
                 ", stock=" + stock +
-                ", ProductName='" + productName + '\'' +
-                ", Description='" + description + '\'' +
-                ", ProductId=" + productId +
+                ", price=" + price +
+                ", imageLink='" + imageLink + '\'' +
+                ", category=" + category +
                 '}';
     }
 }

@@ -1,7 +1,8 @@
-package com.vanish.javaweb.Controllers.Admin.Category;
+package com.vanish.javaweb.Controllers.Admin.Product;
 
 import com.vanish.javaweb.Entities.Category;
-import com.vanish.javaweb.Services.Category.CategoryServiceImpl;
+import com.vanish.javaweb.Entities.Product;
+import com.vanish.javaweb.Services.Product.ProductServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,27 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteCategoryController", value = "/admin/categories/delete")
-public class DeleteCategoryController extends HttpServlet {
-    CategoryServiceImpl categoryService = new CategoryServiceImpl();
+@WebServlet(name = "DeleteProductController", value = "/admin/products/delete")
+public class DeleteProductController extends HttpServlet {
+    ProductServiceImpl productService = new ProductServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+
         String paramId = request.getParameter("id");
         if (paramId != null) {
             try {
-                int categoryId = Integer.parseInt(paramId);
-                Category category = categoryService.findCateById(categoryId);
-                if (category == null) throw new Exception("No category found");
+                int productId = Integer.parseInt(paramId);
+                Product product = productService.findById(productId);
+                if (product == null) throw new Exception("No product found");
 
-                categoryService.delete(categoryId);
+                productService.delete(productId);
 
-                request.getSession().setAttribute("message", "Delete Category successfully");
-                response.sendRedirect(request.getContextPath() + "/admin/categories");
+                request.getSession().setAttribute("message", "Delete Product successfully");
+                response.sendRedirect(request.getContextPath() + "/admin/products");
             } catch (Exception e) {
                 request.getSession().setAttribute("message", e.getMessage());
-                response.sendRedirect(request.getContextPath() + "/admin/categories");
+                response.sendRedirect(request.getContextPath() + "/admin/products");
             }
         }
     }
