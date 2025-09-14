@@ -7,7 +7,10 @@
 <head>
     <link rel="stylesheet" href="<c:url value='/public/css/styles-admin.css'/>">
     <link rel="stylesheet" href="<c:url value='/public/css/toast.css'/>">
+    <link rel="stylesheet" href="<c:url value='/public/css/modal.css'/>">
+    <link rel="stylesheet" href="<c:url value='/public/css/modal.css'/>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="<c:url value='/public/js/modal.js'/>"></script>
 </head>
 <body>
     <div class="content">
@@ -30,6 +33,21 @@
 	<div id="toast" class="toast hidden">
         <span id="toast-message"></span>
     </div>
+
+
+    <!-- Confirm Delete Modal -->
+    <div id="customModal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalTitle">Confirm Delete</h3>
+        <p id="modalMessage">Are you sure you want to delete category <span id="cateName"></span>?</p>
+        <div class="modal-actions">
+          <button id="modalCancel" class="btn">Cancel</button>
+          <button id="modalOk" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

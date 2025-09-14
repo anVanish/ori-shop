@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
 
+<a class="btn bottom" href="${pageContext.request.contextPath}/admin/categories">Back</a>
 <div class="form-container">
     <h2>${isUpdate ? 'Update' : "Add"} category</h2>
     <form action="" method="POST">

@@ -3,7 +3,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 
 <h2>Categories list</h2>
-<a class="btn" href="${pageContext.request.contextPath}/admin/categories/add">Add Category</a>
+<a class="btn bottom" href="${pageContext.request.contextPath}/admin/categories/add">Add Category</a>
 <br>
 <table>
 <thead>
@@ -28,7 +28,10 @@
             <td>${c.products.size()}</td>
             <td>
                 <a class="btn" href="${pageContext.request.contextPath}/admin/categories/update?id=${c.categoryId}">Update</a>
-                <a class="btn" href="${pageContext.request.contextPath}/admin/categories/delete?id=${c.categoryId}">Delete</a>
+                <a class="btn" onclick="showModal(
+                    'Delete Category',
+                    'Do you want to delete category ${c.categoryName}?',
+                    '${pageContext.request.contextPath}/admin/categories/delete?id=${c.categoryId}')">Delete</a>
             </td>
         </tr>
     </c:forEach>
