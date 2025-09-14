@@ -55,7 +55,7 @@ public class AuthFilter implements Filter {
         }
 
         if (protectedPaths.stream().anyMatch(path::startsWith)) {
-            if (!loggedIn) {
+            if (!loggedIn || isAdmin) {
                 req.getSession().setAttribute("errorMessage", "Please login to continue");
                 res.sendRedirect(req.getContextPath() + "/login");
                 return;

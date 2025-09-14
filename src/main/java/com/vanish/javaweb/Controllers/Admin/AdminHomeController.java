@@ -1,4 +1,4 @@
-package com.vanish.javaweb.Controllers;
+package com.vanish.javaweb.Controllers.Admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

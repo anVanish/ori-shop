@@ -1,4 +1,4 @@
-package com.vanish.javaweb.Controllers.Auth;
+package com.vanish.javaweb.Controllers.Admin.Auth;
 
 import com.vanish.javaweb.Entities.User;
 import com.vanish.javaweb.Model.UserModel;
