@@ -11,9 +11,15 @@
 </head>
 <body>
 	<%@ include file="/common/user/header.jsp" %>
+	<c:if test="${not empty hasSlider}">
+        <%@ include file="/common/user/slider.jsp" %>
+	</c:if>
 
-	<decorator:body></decorator:body>
-	
+
+    <div class="parent-container">
+	    <decorator:body></decorator:body>
+    </div>
+
 	<%@ include file="/common/user/footer.jsp" %>
 
 	<div id="toast" class="toast hidden">

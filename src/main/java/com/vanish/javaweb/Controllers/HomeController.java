@@ -25,6 +25,7 @@ public class HomeController extends HttpServlet {
         request.setAttribute("popularProducts", products);
         request.setAttribute("categories", categories);
 
+        request.setAttribute("hasSlider", true);
         request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
     }
 

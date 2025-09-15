@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ProductDetailController", value = "/products/*")
 public class ProductDetailController extends HttpServlet {
@@ -24,6 +25,9 @@ public class ProductDetailController extends HttpServlet {
             String idStr = pathInfo.substring(1);
             int productId = Integer.parseInt(idStr);
             Product product = productService.findById(productId);
+            List<Product> popularProducts = productService.findAll();
+            request.setAttribute("popularProducts", popularProducts);
+
             request.setAttribute("product", product);
             request.getRequestDispatcher("/views/user/product/detail.jsp").forward(request, response);
 

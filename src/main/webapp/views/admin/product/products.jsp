@@ -14,6 +14,7 @@
     <th>Category</th>
     <th>Stock</th>
     <th>Price</th>
+    <th>Views</th>
     <th>Action</th>
   </tr>
 </thead>
@@ -26,12 +27,13 @@
 
     <c:forEach var="p" items="${products}">
         <tr>
-            <td>${p.imageLink}</td>
+            <td><img src="${p.imageLink}" alt="${p.productName}"/></td>
             <td>${p.productId}</td>
             <td>${p.productName}</td>
             <td>${p.category.categoryName}</td>
             <td>${p.stock}</td>
             <td>${p.price}</td>
+            <td>${p.views}</td>
             <td>
                 <a class="btn" href="${pageContext.request.contextPath}/admin/products/update?id=${p.productId}">Update</a>
                 <a class="btn" onclick="showModal(

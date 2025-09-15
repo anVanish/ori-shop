@@ -6,6 +6,9 @@ a{
     color: black;
 }
 
+ .parent-container{
+    padding: 0 40px;
+}
 
 /* Header */
 header {
@@ -95,7 +98,7 @@ header nav a, header a{
   margin-bottom: 10px;
   flex-grow: 1;   /* pushes price to bottom */
   display: -webkit-box;
-  -webkit-line-clamp: 2;     /* max 2 lines */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -105,6 +108,10 @@ header nav a, header a{
   font-weight: bold;
   color: #e74c3c;
   margin-top: auto; /* stick price to bottom */
+}
+
+.bottom{
+    margin-bottom: 10px;
 }
 
 /* Categories slider */
@@ -223,4 +230,72 @@ footer {
 
 .form-footer a:hover {
   text-decoration: underline;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
+  padding: 20px 20px 100px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sidebar h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.sidebar label {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.btn-cart {
+  max-width: 200px;
+  background: #457b9d;
+  color: #fff;
+}
+
+.btn-cart:hover {
+  background: #356180;
+}
+/* Left: Product Image */
+.product-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Right: Info */
+.product-info h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.product-price {
+  font-size: 24px;
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
 }
