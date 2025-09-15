@@ -19,8 +19,11 @@ public class User implements Serializable {
     private String ward;
     private String street;
     private boolean isAdmin;
+    private String imageLink;
 
-    public User() { }
+    public User() {
+    }
+
     public User(Builder builder) {
         this.userId = builder.userId;
         this.userName = builder.userName;
@@ -30,8 +33,10 @@ public class User implements Serializable {
         this.district = builder.district;
         this.ward = builder.ward;
         this.street = builder.street;
+        this.imageLink = builder.imageLink;
         this.isAdmin = builder.isAdmin;
     }
+
     //getters
     public int getUserId() {
         return userId;
@@ -69,8 +74,48 @@ public class User implements Serializable {
         return isAdmin;
     }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
     //Builder
-    public static class Builder{
+    public static class Builder {
         private int userId;
         @Column(length = 255)
         private String userName;
@@ -81,6 +126,7 @@ public class User implements Serializable {
         private String ward;
         private String street;
         private boolean isAdmin = false;
+        private String imageLink;
 
         public Builder setUserId(int userId) {
             this.userId = userId;
@@ -128,7 +174,12 @@ public class User implements Serializable {
             return this;
         }
 
-        public User build(){
+        public Builder setImageLink(String imageLink) {
+            this.imageLink = imageLink;
+            return this;
+        }
+
+        public User build() {
             return new User(this);
         }
     }

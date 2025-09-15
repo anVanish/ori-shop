@@ -19,10 +19,14 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-header nav a, header a{
+header nav a{
   color: #fff;
   margin-left: 20px;
   text-decoration: none;
+}
+
+header a{
+    color: #FFB300;
 }
 
 /* Slider */
@@ -202,10 +206,11 @@ footer {
 }
 
 .btn {
+  display: inline-block;
   width: 100%;
   padding: 12px;
-  background: #0077ff;
-  color: #fff;
+  background: #FFB300;
+  color: #000;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
@@ -214,7 +219,7 @@ footer {
 }
 
 .btn:hover {
-  background: #005fcc;
+  background: #FFC107;
 }
 
 .form-footer {
@@ -260,12 +265,12 @@ footer {
 
 .btn-cart {
   max-width: 200px;
-  background: #457b9d;
+  background: #FFB300;
   color: #fff;
 }
 
 .btn-cart:hover {
-  background: #356180;
+  background: #FFC107;
 }
 /* Left: Product Image */
 .product-image img {
@@ -298,4 +303,34 @@ footer {
 .actions {
   display: flex;
   gap: 15px;
+}
+
+.user-card {
+  width: 200px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.user-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }

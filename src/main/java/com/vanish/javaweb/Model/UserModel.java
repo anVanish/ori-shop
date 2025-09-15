@@ -14,6 +14,7 @@ public class UserModel {
     private String ward;
     private String street;
     private boolean isAdmin;
+    private String imageLink;
 
     public UserModel() {
     }
@@ -27,6 +28,7 @@ public class UserModel {
         this.ward = user.getWard();
         this.street = user.getStreet();
         this.isAdmin = user.getIsAdmin();
+        this.imageLink = user.getImageLink();
     }
 
     public int getUserId() {
@@ -61,6 +63,10 @@ public class UserModel {
         return isAdmin;
     }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -93,6 +99,10 @@ public class UserModel {
         isAdmin = admin;
     }
 
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
     @Override
     public String toString() {
         return "UserModel{" +
@@ -104,6 +114,7 @@ public class UserModel {
                 ", ward='" + ward + '\'' +
                 ", street='" + street + '\'' +
                 ", isAdmin=" + isAdmin +
+                ", imageLink='" + imageLink + '\'' +
                 '}';
     }
 }

@@ -11,13 +11,15 @@ public interface IUserService {
 
     User findByEmail(String email);
 
-//    boolean insert(User user);
+    void insert(User user);
 
     User signup(String email, String plainPassword, String confirmedPassword) throws Exception;
 
     User login(String email, String plainPassword) throws Exception;
 
-//    boolean update(User user);
+    void update(User user);
+
+    void updatePassword(int userId, String oldPassword, String newPassword) throws Exception;
 
     void deleteById(int id);
 }
