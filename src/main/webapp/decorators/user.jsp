@@ -11,9 +11,6 @@
 </head>
 <body>
 	<%@ include file="/common/user/header.jsp" %>
-	<c:if test="${not empty hasSidebar}">
-        <%@ include file="/common/user/sidebar.jsp" %>
-    </c:if>
 
 	<decorator:body></decorator:body>
 	
@@ -75,5 +72,8 @@
         </script>
         <c:remove var="errorMessage" scope="session"/>
     </c:if>
+
+
+    <script src="<c:url value='/public/js/main.js'/>"></script>
 </body>
 </html>

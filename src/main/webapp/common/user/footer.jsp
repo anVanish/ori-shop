@@ -1,2 +1,3 @@
-
-<h1>User footer</h1>
+<footer>
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+</footer>

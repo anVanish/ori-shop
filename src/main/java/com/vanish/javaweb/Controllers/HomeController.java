@@ -16,13 +16,13 @@ import java.util.List;
 @WebServlet(name = "HomeController", value = "/home")
 public class HomeController extends HttpServlet {
     CategoryServiceImpl categoryService = new CategoryServiceImpl();
-//    ProductServiceImpl productService = new ProductServiceImpl();
+    ProductServiceImpl productService = new ProductServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-//        List<Product> products = productService.findAll();
+        List<Product> products = productService.findAll();
         List<Category> categories = categoryService.findAll();
-//        request.setAttribute("products", products);
+        request.setAttribute("popularProducts", products);
         request.setAttribute("categories", categories);
 
         request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
