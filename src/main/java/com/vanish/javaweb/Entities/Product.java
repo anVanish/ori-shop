@@ -19,6 +19,8 @@ public class Product implements Serializable {
     private int stock;
     private int price;
     private String imageLink;
+    @Column(nullable = false, columnDefinition = "int default 0")
+    private int views = 0;
 
     @ManyToOne
     @JoinColumn(name = "CategoryID")
@@ -34,6 +36,7 @@ public class Product implements Serializable {
         this.price = builder.price;
         this.imageLink = builder.imageLink;
         this.category = builder.category;
+        this.views = builder.views;
     }
 
     //getter
@@ -65,6 +68,10 @@ public class Product implements Serializable {
         return category;
     }
 
+    public int getViews() {
+        return views;
+    }
+
     //setter
     public void setProductId(int productId) {
         this.productId = productId;
@@ -94,6 +101,10 @@ public class Product implements Serializable {
         this.category = category;
     }
 
+    public void setViews(int views) {
+        this.views = views;
+    }
+
     //Builder
     public static class Builder{
         private int productId;
@@ -104,6 +115,7 @@ public class Product implements Serializable {
         private int price;
         private String imageLink;
         private Category category;
+        private int views = 0;
 
         public Builder setProductId(int productId) {
             this.productId = productId;
@@ -140,6 +152,11 @@ public class Product implements Serializable {
             return this;
         }
 
+        public Builder setViews(int views){
+            this.views = views;
+            return this;
+        }
+
         public Product build(){
             return new Product(this);
         }
@@ -154,6 +171,7 @@ public class Product implements Serializable {
                 ", stock=" + stock +
                 ", price=" + price +
                 ", imageLink='" + imageLink + '\'' +
+                ", views=" + views +
                 ", category=" + category +
                 '}';
     }
