@@ -216,6 +216,8 @@ footer {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
+  text-align: center;
+  margin-top: auto;
 }
 
 .btn:hover {
@@ -333,4 +335,109 @@ footer {
   color: #555;
   margin-bottom: 20px;
   word-wrap: break-word;
+}
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-height: 567px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.cart-table th {
+    background: #f0f0f0;
+}
+
+.product-info {
+    align-items: center;
+    gap: 10px;
+}
+
+.product-info h1{
+    text-align: left;
+}
+
+.product-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-control button {
+    padding: 5px 10px;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.quantity-control input {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+}
+
+.cart-summary {
+    text-align: right;
+    margin-top: auto;
+}
+
+.checkout-btn {
+    background: #FFB300;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background: #FFC107;
+}
+
+.btn-modify{
+    padding: 6px;
+    margin: 0;
 }

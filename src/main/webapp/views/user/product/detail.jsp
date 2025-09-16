@@ -11,12 +11,12 @@ pageEncoding="UTF-8"%>
     <!-- Right side: Product info -->
     <div class="product-info">
       <h1>${product.productName}</h1>
-      <div class="product-price">${product.price}VND</div>
+      <div class="product-price"><fmt:formatNumber value="${product.price}" type="number"/>đ</div>
       <p>Views: ${product.views}</p>
       <a href="<c:url value='/products?categoryId=${product.category.categoryId}'/>">Category: ${product.category.categoryName}</a>
       <div class="product-desc">${product.description}</div>
       <div class="actions">
-        <button class="btn btn-cart">Add to Cart</button>
+        <a href="<c:url value='/cart/add?productId=${product.productId}'/>" class="btn btn-cart">Add to Cart</a>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
               <img src="${p.imageLink}" alt="${p.productName}">
               <h3 class="product-name">${p.productName}</h3>
               <p class="product-desc">${p.description}</p>
-              <div class="price bottom">${p.price}VND</div>
+              <div class="price bottom"><fmt:formatNumber value="${p.price}" type="number"/>đ</div>
               <button class="btn">Add to cart</button>
           </a>
       </c:forEach>
