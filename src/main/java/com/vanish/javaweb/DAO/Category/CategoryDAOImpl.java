@@ -8,18 +8,26 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class CategoryDAOImpl implements ICategoryDAO{
+public class CategoryDAOImpl implements ICategoryDAO {
     @Override
     public List<Category> findAll() {
         EntityManager enma = JPAConfig.getEntityManager();
-        TypedQuery<Category> query= enma.createNamedQuery("Category.findAll", Category.class);
-        return query.getResultList();
+        try {
+            TypedQuery<Category> query = enma.createNamedQuery("Category.findAll", Category.class);
+            return query.getResultList();
+        } finally {
+            enma.close();
+        }
     }
 
     @Override
     public Category findById(int id) {
         EntityManager enma = JPAConfig.getEntityManager();
-        return enma.find(Category.class, id);
+        try {
+            return enma.find(Category.class, id);
+        } finally {
+            enma.close();
+        }
     }
 
     @Override
@@ -34,7 +42,7 @@ public class CategoryDAOImpl implements ICategoryDAO{
             e.printStackTrace();
             trans.rollback();
             throw e;
-        }finally {
+        } finally {
             enma.close();
         }
     }
@@ -51,7 +59,7 @@ public class CategoryDAOImpl implements ICategoryDAO{
             e.printStackTrace();
             trans.rollback();
             throw e;
-        }finally {
+        } finally {
             enma.close();
         }
     }
@@ -63,16 +71,16 @@ public class CategoryDAOImpl implements ICategoryDAO{
         try {
             trans.begin();
             Category category = enma.find(Category.class, id);
-            if(category != null) {
+            if (category != null) {
                 enma.remove(category);
-            }else {
+            } else {
                 throw new Exception("Không tìm thấy");
             }
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();
             trans.rollback();
-        }finally {
+        } finally {
             enma.close();
         }
     }

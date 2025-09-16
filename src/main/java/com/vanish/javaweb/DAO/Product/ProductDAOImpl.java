@@ -9,18 +9,26 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class ProductDAOImpl implements IProductDAO{
+public class ProductDAOImpl implements IProductDAO {
     @Override
     public List<Product> findAll() {
         EntityManager enma = JPAConfig.getEntityManager();
-        TypedQuery<Product> query= enma.createNamedQuery("Product.findAll", Product.class);
-        return query.getResultList();
+        try {
+            TypedQuery<Product> query = enma.createNamedQuery("Product.findAll", Product.class);
+            return query.getResultList();
+        } finally {
+            enma.close();
+        }
     }
 
     @Override
     public Product findById(int id) {
         EntityManager enma = JPAConfig.getEntityManager();
-        return enma.find(Product.class, id);
+        try {
+            return enma.find(Product.class, id);
+        } finally {
+            enma.close();
+        }
     }
 
     @Override
@@ -35,7 +43,7 @@ public class ProductDAOImpl implements IProductDAO{
             e.printStackTrace();
             trans.rollback();
             throw e;
-        }finally {
+        } finally {
             enma.close();
         }
     }
@@ -52,7 +60,7 @@ public class ProductDAOImpl implements IProductDAO{
             e.printStackTrace();
             trans.rollback();
             throw e;
-        }finally {
+        } finally {
             enma.close();
         }
     }
@@ -64,16 +72,16 @@ public class ProductDAOImpl implements IProductDAO{
         try {
             trans.begin();
             Product product = enma.find(Product.class, id);
-            if(product != null) {
+            if (product != null) {
                 enma.remove(product);
-            }else {
+            } else {
                 throw new Exception("Không tìm thấy");
             }
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();
             trans.rollback();
-        }finally {
+        } finally {
             enma.close();
         }
     }
