@@ -16,6 +16,10 @@
                 <input type="email" id="email" name="email" required value="${user.email}">
             </div>
             <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" value="${user.phone}">
+            </div>
+            <div class="form-group">
                 <label for="imageLink">Image Link</label>
                 <input type="text" id="imageLink" name="imageLink" value="${user.imageLink}">
             </div>

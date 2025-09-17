@@ -2,13 +2,12 @@ package com.vanish.javaweb.Model;
 
 import com.vanish.javaweb.Entities.User;
 
-import javax.persistence.Column;
 
 public class UserModel {
     private int userId;
-    @Column(length = 255)
     private String userName;
     private String email;
+    private String phone;
     private String city;
     private String district;
     private String ward;
@@ -23,6 +22,7 @@ public class UserModel {
         this.userId = user.getUserId();
         this.userName = user.getUserName();
         this.email = user.getEmail();
+        this.phone = user.getPhone();
         this.city = user.getCity();
         this.district = user.getDistrict();
         this.ward = user.getWard();
@@ -67,40 +67,8 @@ public class UserModel {
         return imageLink;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public void setWard(String ward) {
-        this.ward = ward;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
+    public String getPhone() {
+        return phone;
     }
 
     @Override
@@ -109,6 +77,7 @@ public class UserModel {
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", city='" + city + '\'' +
                 ", district='" + district + '\'' +
                 ", ward='" + ward + '\'' +

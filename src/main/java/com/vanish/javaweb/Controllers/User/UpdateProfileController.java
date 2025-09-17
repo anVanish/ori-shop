@@ -30,9 +30,11 @@ public class UpdateProfileController extends HttpServlet {
         String userName = request.getParameter("userName");
         String email = request.getParameter("email");
         String imageLink = request.getParameter("imageLink");
+        String phone = request.getParameter("phone");
 
         user.setUserName(userName);
         user.setEmail(email);
+        user.setPhone(phone);
         user.setImageLink(imageLink);
 
         userService.update(user);

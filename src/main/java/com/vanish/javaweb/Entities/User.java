@@ -12,6 +12,7 @@ public class User implements Serializable {
     private int userId;
     @Column(length = 255)
     private String userName;
+    private String phone;
     private String email;
     private String password;
     private String city;
@@ -29,6 +30,7 @@ public class User implements Serializable {
         this.userName = builder.userName;
         this.email = builder.email;
         this.password = builder.password;
+        this.phone = builder.phone;
         this.city = builder.city;
         this.district = builder.district;
         this.ward = builder.ward;
@@ -52,6 +54,14 @@ public class User implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
     public String getCity() {
@@ -114,6 +124,14 @@ public class User implements Serializable {
         this.imageLink = imageLink;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     //Builder
     public static class Builder {
         private int userId;
@@ -121,6 +139,7 @@ public class User implements Serializable {
         private String userName;
         private String email;
         private String password;
+        private String phone;
         private String city;
         private String district;
         private String ward;
@@ -146,6 +165,11 @@ public class User implements Serializable {
 
         public Builder setPassword(String password) {
             this.password = password;
+            return this;
+        }
+
+        public Builder setPhone(String phone) {
+            this.phone = phone;
             return this;
         }
 
