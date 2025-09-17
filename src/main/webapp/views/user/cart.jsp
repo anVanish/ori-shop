@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
             <h2>Cart Summary</h2>
             <p class="bottom"><strong>Total:</strong>
             <fmt:formatNumber value="${total}" type="number"/>đ</p>
-            <button class="checkout-btn">Checkout</button>
+            <a href="<c:url value='/checkout'/>" class="checkout-btn">Checkout</a>
         </div>
     </c:if>
 </div>
