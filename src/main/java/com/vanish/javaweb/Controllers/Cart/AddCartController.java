@@ -4,6 +4,7 @@ import com.vanish.javaweb.Entities.Cart;
 import com.vanish.javaweb.Entities.Category;
 import com.vanish.javaweb.Entities.Product;
 import com.vanish.javaweb.Entities.User;
+import com.vanish.javaweb.Model.UserModel;
 import com.vanish.javaweb.Services.Cart.CartServiceImpl;
 import com.vanish.javaweb.Services.Product.ProductServiceImpl;
 import com.vanish.javaweb.Services.User.UserServiceImpl;
@@ -23,14 +24,15 @@ public class AddCartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int userId = 1;
         String paramId = request.getParameter("productId");
         if (paramId != null) {
             try {
+                UserModel userModel = (UserModel) request.getSession().getAttribute("user");
+
                 int productId = Integer.parseInt(paramId);
                 Product product = productService.findById(productId);
                 if (product == null) throw new Exception("Product not found");
-                User user = userService.findById(userId);
+                User user = userService.findById(userModel.getUserId());
                 if (user == null) throw new Exception("Please login to continue");
 
                 cartService.addToCart(user, product);

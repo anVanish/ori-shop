@@ -18,7 +18,8 @@ public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //get user id from session
-        User user = userService.findById(1);
+        UserModel userModel = (UserModel) request.getSession().getAttribute("user");
+        User user = userService.findById(userModel.getUserId());
         request.setAttribute("user", user);
         request.getRequestDispatcher("/views/user/profile/profile.jsp").forward(request, response);
     }

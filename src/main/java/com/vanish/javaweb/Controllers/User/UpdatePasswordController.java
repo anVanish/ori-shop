@@ -1,6 +1,7 @@
 package com.vanish.javaweb.Controllers.User;
 
 import com.vanish.javaweb.Entities.User;
+import com.vanish.javaweb.Model.UserModel;
 import com.vanish.javaweb.Services.User.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -26,7 +27,9 @@ public class UpdatePasswordController extends HttpServlet {
         String confirmedNewPassword = request.getParameter("confirmedNewPassword");
         try {
             if (!newPassword.equals(confirmedNewPassword)) throw new Exception("Password confirmed incorrect");
-            userService.updatePassword(1, oldPassword, newPassword);
+            UserModel userModel = (UserModel) request.getSession().getAttribute("user");
+            userService.updatePassword(userModel.getUserId(), oldPassword, newPassword);
+
             request.getSession().setAttribute("message", "Update Password successfully");
             response.sendRedirect(request.getContextPath() + "/me");
         } catch (Exception e) {

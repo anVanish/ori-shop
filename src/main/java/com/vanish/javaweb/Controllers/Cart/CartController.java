@@ -1,6 +1,7 @@
 package com.vanish.javaweb.Controllers.Cart;
 
 import com.vanish.javaweb.Entities.Cart;
+import com.vanish.javaweb.Model.UserModel;
 import com.vanish.javaweb.Services.Cart.CartServiceImpl;
 
 import javax.servlet.ServletException;
@@ -14,11 +15,13 @@ import java.util.List;
 @WebServlet(name = "CartController", value = "/cart")
 public class CartController extends HttpServlet {
     CartServiceImpl cartService = new CartServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Cart> carts = cartService.findAllByUser(1);
+        UserModel userModel = (UserModel) request.getSession().getAttribute("user");
+        List<Cart> carts = cartService.findAllByUser(userModel.getUserId());
         int total = 0;
-        for (Cart c : carts){
+        for (Cart c : carts) {
             total += c.getProduct().getPrice() * c.getQuantity();
         }
 

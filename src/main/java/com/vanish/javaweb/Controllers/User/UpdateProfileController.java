@@ -1,6 +1,7 @@
 package com.vanish.javaweb.Controllers.User;
 
 import com.vanish.javaweb.Entities.User;
+import com.vanish.javaweb.Model.UserModel;
 import com.vanish.javaweb.Services.User.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -26,7 +27,9 @@ public class UpdateProfileController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         //get id from session
-        User user = userService.findById(1);
+        UserModel userModel = (UserModel) request.getSession().getAttribute("user");
+        User user = userService.findById(userModel.getUserId());
+
         String userName = request.getParameter("userName");
         String email = request.getParameter("email");
         String imageLink = request.getParameter("imageLink");
