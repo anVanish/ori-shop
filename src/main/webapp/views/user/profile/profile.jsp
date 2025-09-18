@@ -17,19 +17,51 @@ pageEncoding="UTF-8"%>
         </div>
     </aside>
 
-    <!-- Product List -->
-    <main class="products">
-        <h3>Orders list</h3>
-      <div class="product-list">
-          <c:forEach var="p" items="${products}" varStatus="status">
-              <a href="<c:url value='/products/${p.productId}'/>" class="product">
-                  <img src="${p.imageLink}" alt="${product.productName}">
-                  <h3 class="product-name">${p.productName}</h3>
-                  <p class="product-desc">${p.description}</p>
-                  <div class="price bottom">${p.price}VND</div>
-                  <button class="btn">Add to cart</button>
-              </a>
-          </c:forEach>
-        </div>
-    </main>
+    <!-- Orders List -->
+   <!-- Orders List -->
+   <main class="orders">
+     <div class="order-list">
+       <table class="order-table">
+         <thead>
+           <tr>
+             <th>ID</th>
+             <th>Products</th>
+             <th>Date</th>
+             <th>Total</th>
+             <th>Status</th>
+             <th>Action</th>
+           </tr>
+         </thead>
+         <tbody>
+           <!-- Order row -->
+           <c:if test="${empty orders}">
+                <tr>
+                 <td class="center" colspan="6">Your orders is empty</td>
+               </tr>
+           </c:if>
+           <c:forEach var="o" items="${orders}">
+               <tr>
+                 <td>${o.orderId}</td>
+                 <td>
+                     <c:forEach var="i" items="${o.orderItems}">
+                       <div class="product-item">
+                         <img src="${i.product.imageLink}" alt="Product">
+                         <div class="order-product-info">
+                           <div class="product-name">${i.product.productName}</div>
+                           <div class="product-qty">Quantity: ${i.quantity}</div>
+                         </div>
+                       </div>
+                    </c:forEach>
+                 </td>
+                 <td><fmt:formatDate value="${o.orderDateAsDate}" pattern="dd-MM-yyyy" /></td>
+                 <td><fmt:formatNumber value="${o.orderTotal}" type="number" />đ</td>
+                 <td><span class="status ${o.orderStatus}">Confirm</span></td>
+                 <td><a href="<c:url value='/order/${o.orderId}'/>" class="btn-view">View</a></td>
+               </tr>
+           </c:forEach>
+         </tbody>
+       </table>
+     </div>
+   </main>
+
   </div>
