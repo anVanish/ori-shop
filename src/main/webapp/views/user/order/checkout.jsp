@@ -4,7 +4,7 @@
 
 <div class="checkout-container">
     <!-- Left: Billing Form -->
-    <form class="checkout-form" action="/order/create" method="POST">
+    <form class="checkout-form" action="<c:url value='/order/create'/>" method="POST">
       <h2>Checkout</h2>
 
       <div class="form-grid">
