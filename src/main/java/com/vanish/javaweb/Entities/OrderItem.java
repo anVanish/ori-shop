@@ -20,6 +20,8 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "productId", nullable = false)
     private Product product;
 
+    private double productPrice;
+
     private int quantity;
 
     private double total;
@@ -34,6 +36,7 @@ public class OrderItem implements Serializable {
         this.product = builder.product;
         this.quantity = builder.quantity;
         this.total = builder.total;
+        this.productPrice = builder.productPrice;
     }
 
     //getter
@@ -57,6 +60,10 @@ public class OrderItem implements Serializable {
         return total;
     }
 
+    public double getProductPrice() {
+        return productPrice;
+    }
+
     //setter
     public void setOrderItemId(int orderItemId) {
         this.orderItemId = orderItemId;
@@ -78,6 +85,10 @@ public class OrderItem implements Serializable {
         this.total = total;
     }
 
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
     //builder
     public static class Builder {
         private int orderItemId;
@@ -85,6 +96,7 @@ public class OrderItem implements Serializable {
         private Product product;
         private int quantity;
         private double total;
+        private double productPrice;
 
         public Builder setOrderItemId(int orderItemId) {
             this.orderItemId = orderItemId;
@@ -108,6 +120,11 @@ public class OrderItem implements Serializable {
 
         public Builder setTotal(double total) {
             this.total = total;
+            return this;
+        }
+
+        public Builder setProductPrice(double productPrice) {
+            this.productPrice = productPrice;
             return this;
         }
 

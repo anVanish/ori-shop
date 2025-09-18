@@ -58,6 +58,7 @@ public class CreateOrderController extends HttpServlet {
                 OrderItem orderItem = new OrderItem.Builder()
                         .setOrder(order)
                         .setProduct(c.getProduct())
+                        .setProductPrice(c.getProduct().getPrice())
                         .setQuantity(c.getQuantity())
                         .setTotal(total)
                         .build();

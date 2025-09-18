@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class OrderDAOImpl implements IOrderDAO{
+public class OrderDAOImpl implements IOrderDAO {
     @Override
     public List<Order> findAllByUser(int userId) {
         EntityManager enma = JPAConfig.getEntityManager();
@@ -26,7 +26,12 @@ public class OrderDAOImpl implements IOrderDAO{
     public Order findById(int orderId) {
         EntityManager enma = JPAConfig.getEntityManager();
         try {
-            return enma.find(Order.class, orderId);
+            return enma.createQuery(
+                            "SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.orderItems " +
+                                    "WHERE o.orderId = :orderId",
+                            Order.class)
+                    .setParameter("orderId", orderId)
+                    .getSingleResult();
         } finally {
             enma.close();
         }

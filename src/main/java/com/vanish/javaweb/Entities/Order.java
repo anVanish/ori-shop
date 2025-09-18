@@ -275,7 +275,6 @@ public class Order implements Serializable {
                 ", district='" + district + '\'' +
                 ", ward='" + ward + '\'' +
                 ", street='" + street + '\'' +
-                ", orderItems=" + orderItems +
                 '}';
     }
 }
