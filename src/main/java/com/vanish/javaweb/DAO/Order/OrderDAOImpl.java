@@ -74,12 +74,20 @@ public class OrderDAOImpl implements IOrderDAO {
     }
 
     @Override
-    public void updateStatus(String status) {
+    public void updateStatus(int orderId, String status) {
         EntityManager enma = JPAConfig.getEntityManager();
+        EntityTransaction tx = enma.getTransaction();
+
         try {
-            enma.createNamedQuery("Order.updateStatus", Order.class)
+            tx.begin();
+            enma.createNamedQuery("Order.updateStatus")
                     .setParameter("status", status)
+                    .setParameter("orderId", orderId)
                     .executeUpdate();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) tx.rollback();
+            throw e;
         } finally {
             enma.close();
         }

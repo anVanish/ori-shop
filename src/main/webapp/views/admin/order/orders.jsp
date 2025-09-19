@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
                  <td>${o.user.userName}</td>
                  <td><fmt:formatDate value="${o.orderDateAsDate}" pattern="dd-MM-yyyy" /></td>
                  <td><fmt:formatNumber value="${o.orderTotal}" type="number" />đ</td>
-                 <td><span class="status ${o.orderStatus}">Confirm</span></td>
+                 <td><span class="status ${o.orderStatus}">${o.orderStatus}</span></td>
                  <td><a href="<c:url value='/admin/orders/${o.orderId}'/>" class="btn-view">View</a></td>
                </tr>
            </c:forEach>

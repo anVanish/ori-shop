@@ -13,7 +13,7 @@ public interface IOrderDAO {
 
     void insert(Order order);
 
-    void updateStatus(String status);
+    void updateStatus(int orderId, String status);
 
     void delete(int orderId);
 }

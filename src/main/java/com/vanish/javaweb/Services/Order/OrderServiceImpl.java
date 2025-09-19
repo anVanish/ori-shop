@@ -29,8 +29,8 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
-    public void updateStatus(String status) {
-        orderDAO.updateStatus(status);
+    public void updateStatus(int orderId, String status) {
+        orderDAO.updateStatus(orderId, status);
     }
 
     @Override
