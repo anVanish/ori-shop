@@ -5,6 +5,8 @@ import com.vanish.javaweb.Entities.Order;
 import java.util.List;
 
 public interface IOrderService {
+    List<Order> findAll();
+
     List<Order> findAllByUser(int userId);
 
     Order findById(int orderId);

@@ -9,6 +9,11 @@ public class OrderServiceImpl implements IOrderService {
     OrderDAOImpl orderDAO = new OrderDAOImpl();
 
     @Override
+    public List<Order> findAll() {
+        return orderDAO.findAll();
+    }
+
+    @Override
     public List<Order> findAllByUser(int userId) {
         return orderDAO.findAllByUser(userId);
     }

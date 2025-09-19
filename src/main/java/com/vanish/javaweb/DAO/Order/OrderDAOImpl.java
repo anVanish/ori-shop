@@ -10,13 +10,32 @@ import java.util.List;
 
 public class OrderDAOImpl implements IOrderDAO {
     @Override
+    public List<Order> findAll() {
+        EntityManager enma = JPAConfig.getEntityManager();
+        try {
+            return enma.createQuery(
+                    "SELECT DISTINCT o FROM Order o " +
+                            "LEFT JOIN FETCH o.orderItems " +
+                            "ORDER BY o.orderId DESC",
+                    Order.class
+            ).getResultList();
+        } finally {
+            enma.close();
+        }
+    }
+
+    @Override
     public List<Order> findAllByUser(int userId) {
         EntityManager enma = JPAConfig.getEntityManager();
         try {
             return enma.createQuery(
-                    "SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.orderItems ORDER BY o.orderId DESC",
-                    Order.class
-            ).getResultList();
+                            "SELECT DISTINCT o FROM Order o " +
+                                    "LEFT JOIN FETCH o.orderItems " +
+                                    "WHERE o.user.userId = :userId " +
+                                    "ORDER BY o.orderId DESC",
+                            Order.class
+                    ).setParameter("userId", userId)
+                    .getResultList();
         } finally {
             enma.close();
         }

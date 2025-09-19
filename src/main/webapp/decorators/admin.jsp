@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<c:url value='/public/css/styles-admin.css'/>">
     <link rel="stylesheet" href="<c:url value='/public/css/toast.css'/>">
     <link rel="stylesheet" href="<c:url value='/public/css/modal.css'/>">
-    <link rel="stylesheet" href="<c:url value='/public/css/modal.css'/>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="<c:url value='/public/js/modal.js'/>"></script>
 </head>
