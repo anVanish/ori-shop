@@ -22,7 +22,7 @@ public class AuthFilter implements Filter {
 
     // Paths that require admin role
     private final List<String> adminPaths = Arrays.asList(
-            "/admin", "/admin/categories", "/admin/products"
+            "/admin", "/admin/categories", "/admin/products", "/admin/users", "/admin/orders"
     );
 
     @Override
@@ -38,6 +38,13 @@ public class AuthFilter implements Filter {
 
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
+        //redirect to home page
+        if (path.equals("/")) {
+            res.sendRedirect(req.getContextPath() + "/home");
+            return;
+        }
+
+        //exclude paths
         List<String> publicPaths = Arrays.asList(
                 "/admin/login", "/assets", "/css", "/js", "/images"
         );
@@ -46,6 +53,7 @@ public class AuthFilter implements Filter {
             return;
         }
 
+        //check login & admin
         boolean loggedIn = (session != null && session.getAttribute("user") != null);
         boolean isAdmin = false;
 
@@ -54,6 +62,7 @@ public class AuthFilter implements Filter {
             isAdmin = user.isAdmin();
         }
 
+        //protected paths require login & not admin
         if (protectedPaths.stream().anyMatch(path::startsWith)) {
             if (!loggedIn || isAdmin) {
                 req.getSession().setAttribute("errorMessage", "Please login to continue");
@@ -62,6 +71,7 @@ public class AuthFilter implements Filter {
             }
         }
 
+        //admin paths require login an admin
         if (adminPaths.stream().anyMatch(path::startsWith)) {
             if (!loggedIn || !isAdmin) {
                 req.getSession().setAttribute("errorMessage", "Please login as Admin");
@@ -70,6 +80,7 @@ public class AuthFilter implements Filter {
             }
         }
 
+        //as normal
         chain.doFilter(request, response);
     }
 
